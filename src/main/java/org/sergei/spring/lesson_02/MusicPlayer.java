@@ -12,6 +12,14 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
+    public MusicPlayer(){}
+    public MusicPlayer(Music music){
+        this.music = music;
+    }
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
     public Music getMusic() {
         return music;
     }
@@ -42,11 +50,6 @@ public class MusicPlayer {
 
     public void setVolume(int volume) {
         this.volume = volume;
-    }
-
-    public MusicPlayer(){}
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
     }
 
     public void playMusicList() {

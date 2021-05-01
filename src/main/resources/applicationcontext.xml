@@ -9,6 +9,7 @@
 
     <bean id="classicalBean"
           class="org.sergei.spring.lesson_02.ClassicalMusic">
+        <
     </bean>
 
     <bean id="jazzBean"
@@ -18,6 +19,7 @@
 
     <bean id="musicPlayerBean"
           class="org.sergei.spring.lesson_02.MusicPlayer">
+<!--        <constructor-arg ref="classicalBean"/>-->
       <property name="musicList">
           <list>
               <ref bean="classicalBean"/>
