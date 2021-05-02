@@ -9,7 +9,8 @@
 
     <bean id="classicalBean"
           class="org.sergei.spring.lesson_02.ClassicalMusic"
-          scope="prototype">
+          scope="prototype"
+          factory-method="getInstance">
 
     </bean>
 
@@ -23,10 +24,14 @@
     -->
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
+
+    <!--        синглтон скоуп идет по умолчанию , init method можем добавить чтобы проверить инициализацию-->
     <bean id="musicPlayerBean"
           class="org.sergei.spring.lesson_02.MusicPlayer"
-          scope="singleton">
-        <!--        синглтон скоуп идет по умолчанию-->
+          scope="singleton"
+          init-method="doInit"
+          destroy-method="doDestroy">
+
 
         <!--        внедрение зависимости через КОНСТРУКТОР в классе MusicPlayer(Music music)-->
         <!--       <constructor-arg ref="classicalBean"/>-->

@@ -1,3 +1,4 @@
+import org.sergei.spring.lesson_02.ClassicalMusic;
 import org.sergei.spring.lesson_02.Music;
 import org.sergei.spring.lesson_02.MusicPlayer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,6 +21,13 @@ public class Main {
         mp1.setVolume(98);
         System.out.println(mp2.getVolume());
 
+
+        ////// получение бина через factory-method указанный в XML
+
+        ClassicalMusic classicalMusic = context.getBean("classicalBean", ClassicalMusic.class);
+        System.out.println(classicalMusic.getSong());
+
+        //////// ОБЯЗАТЕЛЬНО ЗАКРЫВАЕМ context
         context.close();
     }
 }

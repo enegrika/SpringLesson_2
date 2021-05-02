@@ -58,6 +58,19 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
+    ////// INIT-METHOD
+
+    private void doInit(){
+        System.out.println("music player bean(object) initialized");
+    }
+
+    ////// DESTROY-METHOD
+
+    private void doDestroy(){
+        System.out.println("music player bean(object) destroyed");
+    }
+
+
     public void playMusic() {
         System.out.println(this.name + " playing " + music.getSong() + " at volume level : " + this.volume);
     }
