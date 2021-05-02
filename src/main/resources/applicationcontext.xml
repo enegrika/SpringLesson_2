@@ -9,23 +9,42 @@
 
     <bean id="classicalBean"
           class="org.sergei.spring.lesson_02.ClassicalMusic">
-        <
+
     </bean>
 
     <bean id="jazzBean"
           class="org.sergei.spring.lesson_02.JazzMusic">
     </bean>
 
+    <!--        внедрение зависимостей или значений переменных объекта(бина) через отдельный ФАЙЛ, который должен находится в classpath: проекта
+    в котором мы можем указывать и хранить значения переменных
+    -->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="musicPlayerBean"
           class="org.sergei.spring.lesson_02.MusicPlayer">
-<!--        <constructor-arg ref="classicalBean"/>-->
-      <property name="musicList">
-          <list>
-              <ref bean="classicalBean"/>
-              <ref bean="jazzBean"/>
-          </list>
-      </property>
+
+        <!--        внедрение зависимости через КОНСТРУКТОР в классе MusicPlayer(Music music)-->
+        <!--       <constructor-arg ref="classicalBean"/>-->
+
+        <!--        внедрение зависимости через SETTER в классе MusicPlayer setMusic(Music music) с передачей ссылки на обЪект-бин класса -->
+        <!--        <property name="music" ref="jazzBean"/>-->
+
+        <!--        внедрение зависимости через SETTER в с передачей сразу параметров String name и int volume  -->
+<!--        <property name="name" value="Sony WALKMAN"/>-->
+<!--        <property name="volume" value="70"/>-->
+        <!--        или указываем теги ссылки на значения которые в ФАЙЛЕ   -->
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+
+
+<!-- СОЗДАНИЕ ЛИСТА и добавление объектов в лист-->
+        <property name="musicList">
+            <list>
+                <ref bean="classicalBean"/>
+                <ref bean="jazzBean"/>
+            </list>
+        </property>
     </bean>
 
 

@@ -12,13 +12,17 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
-    public MusicPlayer(){}
-    public MusicPlayer(Music music){
+    public MusicPlayer() {
+    }
+
+    public MusicPlayer(Music music) {
         this.music = music;
     }
+
     public MusicPlayer(List<Music> musicList) {
         this.musicList = musicList;
     }
+
 
     public Music getMusic() {
         return music;
@@ -28,6 +32,7 @@ public class MusicPlayer {
         this.music = music;
     }
 
+
     public List<Music> getMusicList() {
         return musicList;
     }
@@ -35,6 +40,7 @@ public class MusicPlayer {
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     }
+
 
     public String getName() {
         return name;
@@ -52,10 +58,14 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
+    public void playMusic() {
+        System.out.println(this.name + " playing " + music.getSong() + " at volume level : " + this.volume);
+    }
+
     public void playMusicList() {
 
-        for (Music music: musicList) {
-            System.out.println(" playing " + music.getSong());
+        for (Music music : musicList) {
+            System.out.println(this.name + " playing " + music.getSong() + " at volume level : " + this.volume);
         }
 
     }
