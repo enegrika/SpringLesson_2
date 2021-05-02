@@ -8,12 +8,14 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="classicalBean"
-          class="org.sergei.spring.lesson_02.ClassicalMusic">
+          class="org.sergei.spring.lesson_02.ClassicalMusic"
+          scope="prototype">
 
     </bean>
 
     <bean id="jazzBean"
-          class="org.sergei.spring.lesson_02.JazzMusic">
+          class="org.sergei.spring.lesson_02.JazzMusic"
+          scope="prototype">
     </bean>
 
     <!--        внедрение зависимостей или значений переменных объекта(бина) через отдельный ФАЙЛ, который должен находится в classpath: проекта
@@ -22,7 +24,9 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="musicPlayerBean"
-          class="org.sergei.spring.lesson_02.MusicPlayer">
+          class="org.sergei.spring.lesson_02.MusicPlayer"
+          scope="prototype">
+
 
         <!--        внедрение зависимости через КОНСТРУКТОР в классе MusicPlayer(Music music)-->
         <!--       <constructor-arg ref="classicalBean"/>-->
@@ -31,14 +35,14 @@
         <!--        <property name="music" ref="jazzBean"/>-->
 
         <!--        внедрение зависимости через SETTER в с передачей сразу параметров String name и int volume  -->
-<!--        <property name="name" value="Sony WALKMAN"/>-->
-<!--        <property name="volume" value="70"/>-->
+        <!--        <property name="name" value="Sony WALKMAN"/>-->
+        <!--        <property name="volume" value="70"/>-->
         <!--        или указываем теги ссылки на значения которые в ФАЙЛЕ   -->
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
 
 
-<!-- СОЗДАНИЕ ЛИСТА и добавление объектов в лист-->
+        <!-- СОЗДАНИЕ ЛИСТА и добавление объектов в лист-->
         <property name="musicList">
             <list>
                 <ref bean="classicalBean"/>
